@@ -1,4 +1,3 @@
-```markdown
 # kleinsniffer 🔎
 
 A command-line tool to scrape and monitor listings from Kleinanzeigen (formerly eBay Kleinanzeigen), a popular German online classifieds marketplace. 🇩🇪
