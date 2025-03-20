@@ -145,11 +145,14 @@ class KleinanzeigenScraper:
 
     def extract_price(self, text: str) -> str:
         logging.debug(f"Extracting price from: {text}")
-        if "VB" in text:
+        price_match = re.search(r'(\d+[.,]?\d*)', text)
+        if "VB" in text and price_match:
+            price = price_match.group(1).replace(',', '.')
+            return f"{price}€ VB"
+        elif "VB" in text:
             return "VB"
-        match = re.search(r'(\d+[.,]?\d*)', text)
-        if match:
-            price = match.group(1).replace(',', '.')
+        elif price_match:
+            price = price_match.group(1).replace(',', '.')
             return price + "€"
         else:
             logging.warning(f"No price found in text: {text}")
